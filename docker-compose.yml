@@ -1,0 +1,13 @@
+name: chillax-gh-pages
+
+services:
+  runner:
+    build:
+      context: .
+      target: base
+    image: chillax-gh-pages:latest
+    volumes:
+      - .:/app:cached
+    command: ['bash']
+    stdin_open: true
+    tty: true
