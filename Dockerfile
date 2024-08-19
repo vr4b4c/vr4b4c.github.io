@@ -11,3 +11,4 @@ RUN gem install bundler -v $BUNDLER_VERSION
 COPY Gemfile Gemfile.lock .
 
 RUN bundle install
+EXPOSE 4001

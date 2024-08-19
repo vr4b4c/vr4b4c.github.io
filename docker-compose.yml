@@ -1,13 +1,22 @@
 name: chillax-gh-pages
 
 services:
-  runner:
+  base: &base
     build:
       context: .
       target: base
     image: chillax-gh-pages:latest
     volumes:
       - .:/app:cached
+
+  runner:
+    <<: *base
     command: ['bash']
     stdin_open: true
     tty: true
+
+  web:
+    <<: *base
+    command: ['bundle', 'exec', 'jekyll', 'serve', '-H', '0.0.0.0', '-P', '4001']
+    ports:
+      - "4002:4001"
